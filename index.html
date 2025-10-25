@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 금융 종목 분석 결과</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1, h4 {
+            color: #343a40;
+        }
+        /* DataFrame to_html 결과 테이블 스타일 */
+        .table {
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        .table th {
+            background-color: #e9ecef;
+            color: #495057;
+            text-align: center;
+        }
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">📈 네이버 금융 - 상위 업종 종목 분석 결과</h1>
+        <p class="text-muted text-center">
+            일간 상승률 기준 상위 업종에서 추출된 종목 중, <strong>거래대금 상위 2700개</strong>를
+            <br><strong>유통총액</strong> 기준으로 내림차순 정렬한 결과입니다.
+        </p>
+        <h4 class="text-end mb-3">기준 시각: {{ timestamp }}</h4>
+
+        {% if table_html %}
+            <div class="table-responsive">
+                {{ table_html }}
+            </div>
+        {% else %}
+            <div class="alert alert-warning text-center" role="alert">
+                데이터를 불러오는 데 실패했거나 결과가 없습니다.
+            </div>
+        {% endif %}
+
+        <hr class="my-4">
+        <p class="text-center text-muted">&copy; 2025 Stock Scraper</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
